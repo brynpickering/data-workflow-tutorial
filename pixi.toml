@@ -1,0 +1,20 @@
+[project]
+name = "data_workflow_tutorial"
+version = "0.1.0"
+authors = ["See AUTHORS file"]
+description = "This project provides a simple example to develop an understanding of how to build and run a reproducible data workflow using snakemake."
+license = "MIT"
+readme = "README.md"
+channels = ["conda-forge", "bioconda"]
+platforms = ["win-64", "linux-64", "osx-arm64"]
+
+[dependencies]
+python = ">=3.12"
+mypy = ">=1.15.0"
+ruff = ">=0.9.9"
+snakefmt = ">=0.10.2"
+conda = ">=25.0.0"
+snakemake-minimal = ">=8.29.0"
+
+[tasks]
+workflow = {cmd = "snakemake --use-conda"}

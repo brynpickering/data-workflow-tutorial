@@ -1,0 +1,12 @@
+name: data-workflow-tutorial
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - python >=3.12
+  - mypy >=1.15.0
+  - ruff >=0.9.9
+  - snakefmt >=0.10.2
+  - conda >=25.0.0
+  - snakemake-minimal >=8.29.0
+  - ipdb
