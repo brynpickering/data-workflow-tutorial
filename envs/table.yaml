@@ -4,4 +4,4 @@ channels:
 dependencies:
   - python=3.12
   - pandas=2.2.3
-  - xarray
+  - pandera=0.23.1

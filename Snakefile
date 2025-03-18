@@ -57,4 +57,5 @@ rule all:
     message: "Run project."
     input:
         "results/combined_text.md",
+        "results/final_data.csv"
     default_target: True
