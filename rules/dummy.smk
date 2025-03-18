@@ -14,3 +14,18 @@ rule dummy_add_text:
         "logs/dummy_add_text.log"  # relative to calling file
     script:
         "../scripts/dummy_script.py"
+
+
+rule multiply_csv:
+    message: "multiply my CSV file by a number"
+    input:
+        csv_to_update = "resources/user/data.csv"
+    params:
+        multiplier = config["parameters"]["multiplier"],
+        adder = config["parameters"]["adder"],
+        apply_to_columns = config["parameters"]["apply_to_columns"],
+    output:
+        final_csv = "results/final_data.csv"
+    conda: "../envs/default.yaml"
+    script:
+        "../scripts/data_manipulator.py"

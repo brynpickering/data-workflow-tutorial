@@ -1,5 +1,9 @@
 resources:
   automatic:
     # Links for automatically downloaded files
-    dummy_readme: "https://raw.githubusercontent.com/calliope-project/clio/refs/heads/main/README.md"
-dummy_text: foobar
+    dummy_readme: "https://raw.githubusercontent.com/brynpickering/data-workflow-tutorial/refs/heads/main/README.md"
+dummy_text: Bryn Pickering
+parameters:
+  multiplier: 2
+  adder: 5
+  apply_to_columns: [demand_heat_kwh, demand_electricity_kwh]
