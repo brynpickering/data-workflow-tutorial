@@ -6,6 +6,19 @@ min_version("8.10")
 
 configfile: "config/default.yaml"
 
+
+rule dummy_download:
+    message:
+        "Download the clio README file."
+    params:
+        url=config["resources"]["automatic"]["dummy_readme"],
+    output:
+        readme="resources/automatic/dummy_readme.md",
+    conda:
+        "envs/shell.yaml"
+    shell:
+        "curl -sSLo {output.readme} \"{params.url}\""
+
 rule dummy_add_text:
     message:
         "Dummy rule combining user inputs and automatic downloads."
@@ -17,11 +30,11 @@ rule dummy_add_text:
     output:
         combined="results/combined_text.md",
     conda:
-        "../envs/shell.yaml"
+        "envs/shell.yaml"
     log:
         "logs/dummy_add_text.log"  # relative to calling file
     script:
-        "../scripts/dummy_script.py"
+        "scripts/dummy_script.py"
 
 rule multiply_csv:
     message: "multiply my CSV file by a number"
@@ -33,23 +46,12 @@ rule multiply_csv:
         apply_to_columns = config["parameters"]["apply_to_columns"],
     output:
         final_csv = "results/final_data.csv"
-    conda: "../envs/default.yaml"
-    script:
-        "../scripts/data_manipulator.py"
-
-
-rule dummy_download:
-    message:
-        "Download the clio README file."
-    params:
-        url=config["resources"]["automatic"]["dummy_readme"],
-    output:
-        readme="resources/automatic/dummy_readme.md",
     conda:
-        "../envs/shell.yaml"
-    shell:
-        "curl -sSLo {output.readme} \"{params.url}\""
-
+        "envs/table.yaml"
+    log:
+        "logs/data_manipulator.log"
+    script:
+        "scripts/data_manipulator.py"
 
 rule all:
     message: "Run project."
