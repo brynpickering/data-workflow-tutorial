@@ -10,3 +10,4 @@ dependencies:
   - conda >=25.0.0
   - snakemake-minimal >=8.29.0
   - ipdb
+  - pre-commit >=4.2.0

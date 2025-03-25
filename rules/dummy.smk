@@ -11,6 +11,6 @@ rule dummy_add_text:
     conda:
         "../envs/shell.yaml"
     log:
-        "logs/dummy_add_text.log"  # relative to calling file
+        "logs/dummy_add_text.log",  # relative to calling file
     script:
         "../scripts/dummy_script.py"
