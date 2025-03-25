@@ -11,4 +11,4 @@ rule dummy_download:
     conda:
         "../envs/shell.yaml"
     shell:
-        "curl -sSLo {output.readme} \"{params.url}\""
+        'curl -sSLo {output.readme} "{params.url}"'
