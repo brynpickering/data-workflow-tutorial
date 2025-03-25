@@ -105,7 +105,7 @@ It's useful to define these outside your script and rule files so that they are 
 >[!NOTE]
 >`config/default.yaml` is a special case file. It will be loaded automatically when you run your workflow.
 > You can define other configuration files, which will be applied _on top of_ the default file (adding to / replacing content in that file).
-> You will just need to remember to refer to those files when you run your workflow `snakemake --use-conda --configfile config/my-config.yaml`
+> You will just need to remember to refer to those files when you run your workflow `snakemake --configfile config/my-config.yaml`
 
 ## Create your workflow
 
@@ -241,13 +241,13 @@ To run your workflow, you have three options:
 To request that your workflow is run just to produce a file of interest, explicitly mention that file:
 
 ```sh
-snakemake --use-conda "./results/converted_table.parquet"
+snakemake "./results/converted_table.parquet"
 ```
 
 You can provide multiple files in a list as well:
 
 ```sh
-snakemake --use-conda "./results/converted_table_1.parquet" "./results/converted_table_3.parquet"
+snakemake "./results/converted_table_1.parquet" "./results/converted_table_3.parquet"
 ```
 
 ### Request rules be run
@@ -259,12 +259,12 @@ From the previous examples, we could request that `my_second_rule` is run.
 Once complete, we will expect to see both `converted_table.parquet` and `further_processed_table.parquet` in our results directory.
 
 ```sh
-snakemake --use-conda my_second_rule
+snakemake my_second_rule
 ```
 
 ### Run `all`
 
-If you just call `snakemake --use-conda` it will trigger the `all` rule inside the `Snakefile`.
+If you just call `snakemake` it will trigger the `all` rule inside the `Snakefile`.
 You can then define your `all` rule to request a number of inputs.
 Snakemake will then ensure these files are all generated:
 
@@ -337,7 +337,7 @@ Now, we can request files with the wildcard filled in and it will extract the va
 For instance, we could call:
 
 ```sh
-snakemake --use-conda "./results/converted_table_1.parquet" "./results/converted_table_3.parquet"
+snakemake "./results/converted_table_1.parquet" "./results/converted_table_3.parquet"
 ```
 
 The first file will have multiplied all values in the table by `1`, the second file will have multiplied them by `3`.
@@ -408,7 +408,7 @@ rule my_second_rule:
 
 ### Parallelising runs
 
-You can run rules in parallel by providing Snakemake with multiple cores: `snakemake --use-conda --cores 4 ...`.
+You can run rules in parallel by providing Snakemake with multiple cores: `snakemake --cores 4 ...`.
 
 ### Debugging
 
